@@ -1,0 +1,164 @@
+/* ───────── LOADING · SIMPEL & MEWAH — "Cemilan, kasih sayang dari Ibu" ─────────
+   Satu file berdiri sendiri (menggantikan loader.css + loader-luxe.css yang lama).
+   Konsep: latar kuning hangat lembut, bingkai tipis, medali logo dengan cincin progres emas-merah,
+   judul serif elegan muncul per huruf, hiasan hati kecil, lalu bacaan kasih sayang ibu yang berganti.
+   Tirai bergelombang terangkat saat selesai. Responsif: HP, tablet, desktop, dan layar landscape pendek. */
+
+html.is-loading{overflow:hidden;scrollbar-gutter:stable}
+
+#mom-loader{
+  --ld-red:#d3140a;--ld-red-d:#9c0f05;--ld-cream:#fff6df;--ld-edge:#ffc331;
+  --ld-ease:cubic-bezier(.77,0,.18,1);--ld-pop:cubic-bezier(.34,1.56,.64,1);
+  --ld-serif:'Cormorant Garamond','Playfair Display',Georgia,serif;
+  position:fixed;inset:0;z-index:99999;color:var(--ld-red);
+  font-family:'Figtree',Arial,sans-serif;touch-action:none;overscroll-behavior:none;
+  will-change:transform;
+  /* pengaman: kalau JS gagal jalan, layar ini hilang sendiri setelah 10 detik */
+  animation:ldFailsafe .01s linear 10s forwards;
+}
+@keyframes ldFailsafe{to{opacity:0;visibility:hidden;pointer-events:none}}
+
+/* ---------- Latar ---------- */
+.ld-stage{
+  position:absolute;inset:0;overflow:hidden;
+  background:
+    radial-gradient(ellipse 60% 48% at 50% 44%,rgba(255,251,232,.97),rgba(255,251,232,0) 74%),
+    radial-gradient(ellipse 95% 85% at 50% 48%,#ffe36a 0%,#ffd23d 52%,var(--ld-edge) 100%);
+}
+.ld-glow{
+  position:absolute;left:50%;top:44%;width:min(92vmin,760px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,252,236,.9),rgba(255,248,214,.3) 48%,rgba(255,248,214,0) 70%);
+  animation:ldBreath 4.2s ease-in-out infinite;pointer-events:none;
+}
+/* tepi bergelombang di bawah tirai */
+.ld-wave{
+  position:absolute;left:0;top:100%;width:100%;height:64px;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 64' preserveAspectRatio='none'%3E%3Cpath d='M0 0H160V26C120 62 120 62 80 26S40 -10 0 26Z' fill='%23ffc331'/%3E%3Cpath d='M0 26C40 -10 40 -10 80 26S120 62 160 26' fill='none' stroke='%23d3140a' stroke-opacity='.45' stroke-width='2'/%3E%3C/svg%3E") repeat-x 0 0/200px 64px;
+}
+
+/* ---------- Isi tengah ---------- */
+.ld-center{
+  position:relative;z-index:3;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(5px,1.3svh,12px);padding:clamp(28px,6vmin,56px) 24px;text-align:center;
+  transition:opacity .4s ease,transform .5s ease;
+}
+
+/* medali logo */
+.ld-badge{
+  position:relative;width:clamp(116px,26vmin,184px);aspect-ratio:1;display:grid;place-items:center;
+  margin-bottom:clamp(4px,1.2svh,10px);
+  animation:ldBadgeIn .9s var(--ld-pop) .1s both;
+}
+.ld-badge::before{
+  content:"";position:absolute;inset:14%;border-radius:50%;
+  background:radial-gradient(circle at 35% 26%,#fffffa,#fff6df 58%,#ffe6ae);
+  box-shadow:0 0 0 3px #fff,0 0 0 5px var(--ld-red),0 0 0 7px #fff6df,0 18px 34px -10px rgba(224,85,10,.55),inset 0 -8px 16px rgba(255,170,40,.3);
+}
+.ld-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+.ld-ring circle{fill:none;stroke-width:3}
+.ld-ring .trk{stroke:rgba(211,20,10,.16)}
+.ld-ring .bar{
+  stroke:var(--ld-red);stroke-linecap:round;stroke-dasharray:452.4;stroke-dashoffset:452.4;
+  filter:drop-shadow(0 0 4px rgba(211,20,10,.4));
+}
+.ld-logo{position:relative;z-index:1;width:50%;aspect-ratio:1;display:grid;place-items:center;animation:ldFloat 3.4s ease-in-out infinite}
+.ld-logo img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 4px rgba(234,101,12,.22))}
+@keyframes ldFloat{0%,100%{transform:translateY(2%)}50%{transform:translateY(-4%)}}
+@keyframes ldBadgeIn{from{opacity:0;transform:scale(.4) rotate(-18deg)}to{opacity:1;transform:none}}
+
+/* teks */
+.ld-eyebrow{
+  display:flex;align-items:center;gap:12px;margin:0;
+  font:700 clamp(10px,2.2vmin,13px)/1 'Figtree',Arial,sans-serif;letter-spacing:.62em;text-indent:.62em;color:var(--ld-red);
+  animation:ldRise .7s ease .35s both;
+}
+.ld-eyebrow::before,.ld-eyebrow::after{content:"";width:clamp(20px,6vmin,42px);height:1.5px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--ld-red))}
+.ld-eyebrow::after{background:linear-gradient(90deg,var(--ld-red),transparent)}
+
+.ld-title{
+  margin:0;display:flex;justify-content:center;flex-wrap:wrap;
+  font:600 clamp(44px,12.4vmin,92px)/1 var(--ld-serif);letter-spacing:.01em;color:var(--ld-red);
+  text-shadow:0 1px 0 #fff6df,0 3px 0 rgba(255,246,223,.75),0 10px 22px rgba(224,85,10,.22);
+}
+.ld-title .c{display:inline-block;opacity:0;transform:translateY(55%) scale(.7)}
+.ld-title .c.sp{width:.24em}
+.ld-go .ld-title .c{animation:ldLetter .8s var(--ld-pop) calc(.45s + var(--i)*.055s) forwards}
+@keyframes ldLetter{to{opacity:1;transform:none}}
+
+/* hiasan hati */
+.ld-orn{display:flex;align-items:center;gap:12px;margin:clamp(0px,.4svh,4px) 0;animation:ldRise .7s ease .95s both}
+.ld-orn i{display:block;width:clamp(34px,10vmin,70px);height:1px;background:linear-gradient(90deg,transparent,rgba(211,20,10,.7))}
+.ld-orn i:last-child{background:linear-gradient(90deg,rgba(211,20,10,.7),transparent)}
+.ld-orn svg{width:14px;height:14px;fill:var(--ld-red);animation:ldBeat 1.5s ease-in-out infinite}
+@keyframes ldBeat{0%,100%{transform:scale(1)}18%{transform:scale(1.28)}36%{transform:scale(1)}54%{transform:scale(1.18)}}
+
+.ld-tag{
+  margin:0;max-width:22em;font:italic 600 clamp(21px,4.6vmin,31px)/1.15 var(--ld-serif);color:var(--ld-red-d);
+  text-shadow:0 1px 0 rgba(255,246,223,.8);animation:ldRise .7s ease 1.05s both;
+}
+
+/* progres */
+.ld-load{width:min(320px,74vw);margin-top:clamp(8px,2.2svh,20px);animation:ldRise .7s ease 1.2s both}
+.ld-row{display:flex;align-items:center;gap:12px}
+.ld-bar{
+  position:relative;flex:1;height:6px;border-radius:99px;overflow:hidden;background:rgba(211,20,10,.14);
+  box-shadow:0 0 0 1.5px rgba(255,246,223,.9),0 0 0 2.5px rgba(211,20,10,.35);
+}
+.ld-bar i{
+  position:absolute;left:0;top:0;bottom:0;width:0;border-radius:inherit;
+  background:linear-gradient(90deg,#ff9a2e,#d3140a);box-shadow:0 0 10px rgba(211,20,10,.45);
+}
+.ld-bar i::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%) 0 0/60px 100% no-repeat;
+  animation:ldSheen 1.5s ease-in-out infinite;
+}
+@keyframes ldSheen{from{background-position:-60px 0}to{background-position:calc(100% + 60px) 0}}
+.ld-pct{min-width:3ch;text-align:right;font:700 15px/1 'Figtree',Arial,sans-serif;font-variant-numeric:tabular-nums;color:var(--ld-red)}
+
+/* bacaan kasih sayang ibu (berganti sesuai progres) */
+.ld-msg{
+  margin:clamp(8px,1.8svh,16px) 0 0;min-height:2.6em;max-width:min(30em,86vw);display:flex;align-items:flex-start;justify-content:center;
+  font:italic 600 clamp(15px,3.1vmin,19px)/1.3 var(--ld-serif);letter-spacing:.01em;color:var(--ld-red-d);
+  transition:opacity .28s ease,transform .28s ease;animation:ldRise .7s ease 1.35s both;
+}
+.ld-msg.swap{opacity:0;transform:translateY(5px)}
+
+@keyframes ldRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes ldBreath{0%,100%{opacity:.8;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
+
+/* 100%: medali berdenyut sebentar */
+#mom-loader.is-ready .ld-badge{animation:ldDone .8s var(--ld-pop) both}
+@keyframes ldDone{0%{transform:scale(1);filter:none}40%{transform:scale(1.09);filter:drop-shadow(0 0 22px rgba(255,252,230,.95))}100%{transform:scale(1);filter:none}}
+
+/* keluar: isi memudar, tirai terangkat */
+#mom-loader.is-out{transform:translateY(calc(-100% - 80px));transition:transform 1.05s var(--ld-ease) .3s;pointer-events:none}
+#mom-loader.is-out .ld-center{opacity:0;transform:translateY(-22px) scale(.95)}
+
+/* ---------- Responsif ---------- */
+@media(max-width:600px){
+  .ld-eyebrow{letter-spacing:.5em;text-indent:.5em}
+  .ld-title{font-size:clamp(42px,13.5vw,60px)}
+  .ld-load{width:min(280px,72vw)}
+}
+@media(max-width:340px){
+  .ld-center{padding-inline:14px}
+  .ld-tag{font-size:19px}
+  .ld-msg{font-size:14px}
+}
+/* layar landscape pendek (HP miring): ringkas */
+@media(max-height:560px){
+  .ld-eyebrow,.ld-orn{display:none}
+  .ld-badge{width:clamp(84px,24svh,120px)}
+  .ld-title{font-size:clamp(34px,11svh,52px)}
+  .ld-tag{font-size:clamp(17px,5svh,22px)}
+  .ld-msg{min-height:0;margin-top:6px;font-size:14px}
+}
+@media(max-height:380px){.ld-badge{display:none}}
+
+/* gerak dikurangi: tanpa animasi, keluar dengan memudar */
+@media(prefers-reduced-motion:reduce){
+  #mom-loader *,#mom-loader *::before,#mom-loader *::after{animation:none!important}
+  #mom-loader .ld-title .c{opacity:1;transform:none}
+  #mom-loader.is-out{transform:none;opacity:0;transition:opacity .4s ease}
+}

@@ -1,0 +1,102 @@
+/* ============================================================
+   KEMASAN · TAMPILAN HP & TABLET (<= 900px)
+   Gambar di ATAS (dikecilkan supaya utuh terlihat), teks/pilihan di BAWAH:
+   pratinjau → pilihan rasa → nama + berat → harga → tombol.
+   Dimuat paling akhir supaya menggantikan aturan HP di kemasan.css,
+   tema-mom4g.css dan kemasan-tarik.css. Hapus file ini = kembali ke tampilan lama.
+   ============================================================ */
+@media(max-width:900px){
+  .package-section .section-title{margin-bottom:14px}
+  .package-section .section-title h2{font-size:clamp(26px,7.6vw,38px)}
+  .package-section .section-title p:not(.eyebrow){font-size:13.5px;margin-top:6px}
+
+  .kx{display:flex;flex-direction:column;gap:0;width:100%;max-width:400px;margin-inline:auto}
+  .kx>*,.kx-panel>*{width:100%}
+
+  /* 1 · GAMBAR (atas, kecil & utuh) */
+  .kx .kx-stage{order:0;width:100%;max-width:100%;height:clamp(268px,76vw,320px)!important;aspect-ratio:auto;
+    margin:0 auto 14px;border-radius:26px;--kw:42px;--pad:14px}
+  .kx-stage .kx-rail{bottom:12px;height:var(--kw)}
+  .kx-stage .kx-track{height:18px;margin-top:-9px}
+  .kx-stage .kx-knob{border-width:3px}
+  .kx-stage .kx-knob svg{width:24px;height:24px}
+  .kx-stage .kx-pull{display:none!important}
+  .kx-bub{font-size:11.5px;padding:4px 9px;bottom:calc(100% + 6px)}
+  .kx-notch::after{font-size:9px;top:calc(var(--kw)/2 + 4px)}
+  .kx-word{top:5%;font-size:clamp(60px,21vw,92px)}
+  .kx-meter{left:14px;top:14px}
+  .kx-meter i{width:24px;height:6px}
+  .kx-count{right:12px;top:10px;scale:.88;transform-origin:right top;padding:4px 12px 4px 9px}
+  .kx-count strong{font-size:22px}
+  .kx-count span{font-size:10px}
+  .kx-drag-tip{display:none}
+
+  /* 2 · TEKS & PILIHAN (bawah) */
+  .kx-flavors{order:1;margin:0 0 10px;padding:4px;gap:4px;border-radius:22px;
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    background:linear-gradient(180deg,#f2590f,#e0140a);box-shadow:0 10px 20px -12px rgba(224,20,10,.7),inset 0 0 0 1.5px rgba(255,217,74,.55)}
+  .kx-flavors button{color:#fff}
+  .kx-flavors button{min-height:34px;padding:6px 8px;gap:6px;font-size:12.5px;border-radius:50px}
+  .kx-flavors button i{width:13px;height:13px}
+
+  .kx-ctl{order:2;margin-top:0;padding:12px 12px 10px;border-radius:24px}
+  .kx-mood{margin:0 0 4px;font-size:11.5px;padding:4px 10px}
+  .kx-head{align-items:center;gap:8px}
+  .kx-head h3{font-size:clamp(18px,5.4vw,22px)}
+  .kx-head output{font-size:clamp(26px,8vw,32px)}
+  .kx-stops{gap:5px;margin-top:6px}
+  .kx-stops button{min-height:44px;padding:6px 2px;font-size:13.5px;border-radius:13px}
+  .kx-stops small{font-size:10px;margin-top:1px}
+
+  .kx-price{order:4;margin:10px 0;padding:10px 14px;border-radius:18px;align-items:flex-end}
+  .kx-price strong{font-size:clamp(25px,7.4vw,31px)}
+  .kx-price>span:last-child{font-size:11.5px}
+  .kx-add{order:5;min-height:48px;font-size:15.5px}
+  .kx-add>span:last-child{width:30px;height:30px;font-size:20px}
+}
+
+/* HP kecil */
+@media(max-width:400px){
+  .kx .kx-stage{height:clamp(250px,74vw,280px)!important;--kw:38px}
+  .kx-word{font-size:clamp(54px,19vw,70px)}
+  .kx-flavors button{font-size:12px;padding-inline:6px}
+}
+
+/* layar HP pendek (landscape / browser kecil): gambar lebih rendah lagi */
+@media(max-width:900px) and (max-height:700px){
+  .kx .kx-stage{height:clamp(210px,44vh,260px)!important}
+}
+
+/* ============================================================
+   MODE COMBO di HP: kartu merah (sama seperti kartu pilihan berat),
+   urutan: gambar → tab rasa → "Combo pilihanmu" → daftar rasa → harga → tombol
+   ============================================================ */
+@media(max-width:900px){
+  .kx.is-combo .kx-combo{order:3;display:grid;gap:10px;margin:10px 0 0;padding:12px;border-radius:24px;border:2px solid transparent;
+    background:linear-gradient(170deg,#e0140a,#ea650c) padding-box,linear-gradient(135deg,#fff0b0,#e0a020 30%,#ffe38a 52%,#c88a1a 78%,#ffe9a0) border-box;
+    box-shadow:0 22px 40px -22px rgba(224,85,10,.8),0 0 0 5px rgba(255,217,74,.2)}
+  .kx.is-combo .kx-ctl{margin-bottom:0;padding:10px 12px;border-radius:24px}
+  .kx.is-combo .kx-mood{margin-bottom:2px}
+  .kx.is-combo .kx-head{margin-bottom:0}
+  .cb-h{margin:0;font-size:10.5px;letter-spacing:.14em;color:#ffd94a}
+  .cb-presets{gap:6px}
+  .cb-presets button{padding:7px 11px;font-size:11.5px;color:#fff;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,217,74,.55)}
+  .cb-presets button.on{background:#ffd94a;color:#c40f05;border-color:#fff}
+  .cb-list{gap:7px}
+  .cb-list li{padding:6px 8px 6px 6px;gap:8px;border-radius:16px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,217,74,.45)}
+  .cb-list li.on{background:#fff8e6;border-color:#ffd94a;transform:none}
+  .cb-pick{gap:8px;color:#fff}
+  .cb-pick img{width:30px;height:38px}
+  .cb-pick b{font-size:14px;line-height:1.15;color:#fff}.cb-pick small{margin-top:2px;font-size:11px;color:#ffe9a0}
+  .cb-list li.on .cb-pick b{color:#7a1403}.cb-list li.on .cb-pick small{color:#1a7a3c}
+  .cb-pick i{width:20px;height:20px;font-size:11px}
+  .cb-step{gap:3px;padding:3px}
+  .cb-step button{width:28px;height:28px;font-size:17px}
+  .cb-step output{min-width:20px;font-size:15px;color:#fff}
+  .cb-list li.on .cb-step output{color:#7a1403}
+  .kx.is-combo .kx-price{margin-top:10px}
+}
+@media(max-width:400px){
+  .cb-pick small{font-size:10.5px}
+  .cb-pick b{font-size:13.5px}
+}

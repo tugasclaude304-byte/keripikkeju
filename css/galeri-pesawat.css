@@ -1,0 +1,135 @@
+/* Galeri poster (#promosi) — gaya "perjalanan": latar kuning, judul besar,
+   kartu foto miring berlabel merah, dan pesawat yang terbang mengikuti scroll.
+   Semua selector diawali .tv supaya tidak menyentuh section lain. */
+
+#promosi .tv{
+  --tv-yellow:#ffd21c;--tv-ink:#ea650c;--tv-red:#e0140a;--tv-cream:#fff8e6;
+  position:relative;isolation:isolate;overflow:hidden;
+  width:100vw;margin:clamp(34px,5vw,64px) 0 clamp(44px,6vw,84px) calc(50% - 50vw);
+  padding:clamp(86px,10vw,150px) 0 clamp(96px,11vw,160px);
+  background:var(--tv-yellow);color:var(--tv-ink);
+}
+/* serat kertas halus, seperti latar di video */
+#promosi .tv::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.22;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .35 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* tepi bergelombang atas & bawah (putih = warna section) */
+#promosi .tv-edge{position:absolute;left:0;width:100%;height:clamp(26px,4vw,58px);z-index:5;pointer-events:none;fill:#fff}
+#promosi .tv-edge-top{top:-1px}
+#promosi .tv-edge-bottom{bottom:-1px;transform:scaleY(-1)}
+
+#promosi .tv-inner{position:relative;width:min(1200px,90%);margin-inline:auto}
+
+/* ---------- Judul ---------- */
+#promosi .tv-head{position:relative;z-index:3}
+#promosi .tv-tag{
+  display:inline-block;transform:rotate(-4deg);transform-origin:left center;
+  font:400 clamp(15px,1.5vw,19px)/1 Anton,Impact,sans-serif;letter-spacing:.12em;
+  color:var(--tv-red);-webkit-text-stroke:6px #fff;paint-order:stroke fill;
+  filter:drop-shadow(0 2px 0 rgba(224,85,10,.25));
+}
+#promosi .tv-title{
+  margin:clamp(14px,2vw,26px) 0 0;
+  font:400 clamp(58px,12vw,172px)/.93 Anton,Impact,'Arial Narrow',sans-serif;
+  letter-spacing:.012em;text-transform:uppercase;color:var(--tv-cream);
+  text-shadow:0 .035em 0 rgba(234,101,12,.3);
+}
+#promosi .tv-hint{
+  margin-top:clamp(16px,2vw,26px);max-width:none;
+  display:flex;align-items:center;gap:10px;
+  font:700 clamp(22px,2.4vw,30px)/1 Caveat,'Bradley Hand',cursive;color:var(--tv-ink);
+}
+#promosi .tv-hint b{
+  display:inline-grid;place-content:center;width:28px;height:28px;border-radius:50%;
+  background:var(--tv-red);color:var(--tv-cream);font:800 14px/1 var(--body);
+}
+
+/* ---------- Panggung ---------- */
+#promosi .tv-stage{position:relative;margin-top:clamp(46px,6vw,96px);padding-bottom:clamp(20px,4vw,60px)}
+#promosi .tv-route{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;z-index:1;pointer-events:none}
+#promosi .tv-dash{fill:none;stroke:var(--tv-cream);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:.1 12;opacity:.95}
+#promosi .tv-reveal{fill:none;stroke:#fff;stroke-width:30;stroke-dasharray:1;stroke-dashoffset:1}
+
+/* ---------- Kartu ---------- */
+#promosi .tv-row{
+  --w:clamp(190px,21vw,255px);
+  position:relative;z-index:2;width:var(--w);margin-left:var(--x,0);margin-top:var(--y,0);
+}
+#promosi .tv-row[data-i="0"]{--x:3%;--y:0}
+#promosi .tv-row[data-i="1"]{--x:61%;--y:-150px}
+#promosi .tv-row[data-i="2"]{--x:24%;--y:-110px}
+#promosi .tv-row[data-i="3"]{--x:70%;--y:-170px}
+#promosi .tv-row[data-i="4"]{--x:42%;--y:-60px}
+
+#promosi .tv-btn{
+  display:block;width:100%;padding:0;text-align:left;position:relative;border-radius:16px;
+  transform:rotate(var(--r,0deg));transform-origin:50% 60%;
+  transition:transform .55s cubic-bezier(.2,1.3,.35,1);
+}
+#promosi .tv-btn:hover,#promosi .tv-btn:focus-visible{transform:rotate(0deg) scale(1.05) translateY(-6px)}
+#promosi .tv-btn:focus-visible{outline:3px solid var(--tv-red);outline-offset:8px}
+#promosi .tv-pic{
+  display:block;overflow:hidden;border-radius:16px;background:#e0140a;
+  box-shadow:0 22px 30px -14px rgba(224,85,10,.55),0 4px 10px rgba(224,85,10,.22);
+}
+#promosi .tv-pic img{width:100%;height:auto;display:block;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+#promosi .tv-btn:hover .tv-pic img{transform:scale(1.05)}
+
+/* label merah bergaris putih di sudut kartu (seperti "LONDON" di video) */
+#promosi .tv-label{
+  position:absolute;z-index:2;left:-8px;top:-17px;max-width:112%;transform:rotate(-6deg);transform-origin:left bottom;
+  font:400 clamp(14px,1.45vw,19px)/1.05 Anton,Impact,sans-serif;letter-spacing:.08em;white-space:nowrap;
+  color:var(--tv-red);-webkit-text-stroke:6px #fff;paint-order:stroke fill;
+  filter:drop-shadow(0 2px 0 rgba(224,85,10,.22));
+}
+#promosi .tv-cap{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-inline:2px;
+  font:700 clamp(21px,2vw,27px)/1.02 Caveat,'Bradley Hand',cursive;color:var(--tv-ink);
+}
+#promosi .tv-cap i{
+  flex:none;display:grid;place-content:center;width:28px;height:28px;border-radius:50%;
+  background:var(--tv-red);color:var(--tv-cream);font:800 14px/1 var(--body);font-style:normal;
+  transition:transform .35s;
+}
+#promosi .tv-btn:hover .tv-cap i{transform:rotate(45deg) scale(1.12)}
+
+/* ---------- Pesawat ---------- */
+#promosi .tv-plane{
+  --pw:clamp(78px,9.5vw,126px);
+  position:absolute;left:0;top:0;width:0;height:0;z-index:4;pointer-events:none;will-change:transform;
+}
+#promosi .tv-plane img{position:absolute;left:0;top:0;width:var(--pw);height:auto;max-width:none;transform-origin:50% 50%;will-change:transform}
+#promosi .tv-plane .sh{filter:brightness(0) blur(7px);opacity:.2}
+#promosi .tv-plane .pl{filter:drop-shadow(0 1px 1px rgba(224,85,10,.25))}
+/* sebelum JS menempatkan pesawat, sembunyikan supaya tidak berkedip di pojok */
+#promosi .tv-plane:not([style]){visibility:hidden}
+
+/* ---------- Layar sedang ---------- */
+@media (max-width:1000px){
+  #promosi .tv-row{--w:clamp(170px,30vw,250px)}
+  #promosi .tv-row[data-i="0"]{--x:2%;--y:0}
+  #promosi .tv-row[data-i="1"]{--x:58%;--y:-110px}
+  #promosi .tv-row[data-i="2"]{--x:20%;--y:-70px}
+  #promosi .tv-row[data-i="3"]{--x:62%;--y:-110px}
+  #promosi .tv-row[data-i="4"]{--x:36%;--y:-40px}
+}
+/* ---------- HP ---------- */
+@media (max-width:640px){
+  #promosi .tv{padding-top:84px}
+  #promosi .tv-inner{width:88%}
+  #promosi .tv-row{--w:min(50vw,220px)}
+  #promosi .tv-row[data-i="0"]{--x:4%;--y:0}
+  #promosi .tv-row[data-i="1"]{--x:40%;--y:-26px}
+  #promosi .tv-row[data-i="2"]{--x:4%;--y:6px}
+  #promosi .tv-row[data-i="3"]{--x:40%;--y:-26px}
+  #promosi .tv-row[data-i="4"]{--x:18%;--y:6px}
+  #promosi .tv-stage{margin-top:54px}
+  #promosi .tv-cap{font-size:22px}
+}
+
+/* ---------- Gerak dimatikan ---------- */
+.motion-paused #promosi .tv-btn,.motion-paused #promosi .tv-pic img{transition:none}
+@media (prefers-reduced-motion:reduce){
+  #promosi .tv-btn,#promosi .tv-pic img,#promosi .tv-cap i{transition:none}
+}

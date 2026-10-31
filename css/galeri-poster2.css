@@ -1,0 +1,14 @@
+/* GALERI POSTER — dua poster besar (Cemilan & Kumpul sekeluarga). Letak kartu menyesuaikan jumlah poster. */
+#promosi .tv-row{--w:clamp(250px,31vw,410px)}
+#promosi .tv-row[data-i="0"]{--x:6%;--y:0}
+#promosi .tv-row[data-i="1"]{--x:56%;--y:-190px}
+@media (max-width:1000px){
+  #promosi .tv-row{--w:clamp(210px,38vw,330px)}
+  #promosi .tv-row[data-i="0"]{--x:4%;--y:0}
+  #promosi .tv-row[data-i="1"]{--x:52%;--y:-130px}
+}
+@media (max-width:640px){
+  #promosi .tv-row{--w:min(62vw,270px)}
+  #promosi .tv-row[data-i="0"]{--x:2%;--y:0}
+  #promosi .tv-row[data-i="1"]{--x:34%;--y:-34px}
+}

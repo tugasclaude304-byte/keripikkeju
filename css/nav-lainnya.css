@@ -1,0 +1,34 @@
+/* ============================================================
+   MENU "LAINNYA" — dropdown di navbar (desktop) + grup di menu mobile
+   ============================================================ */
+header.header .nav-more{position:relative;display:inline-flex;align-items:center}
+header.header .nav-more>button{
+  position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  padding:9px 15px;border:0;border-radius:999px;background:none;font:inherit;font-size:13.5px;font-weight:700;letter-spacing:.2px;
+  color:var(--lx-ink,#3a1608);transition:color .25s,transform .3s cubic-bezier(.22,.8,.24,1)}
+header.header .nav-more>button::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;
+  background:linear-gradient(180deg,#ffeaa6,#ffd160);box-shadow:0 4px 14px rgba(255,106,34,.32),0 0 0 1px rgba(255,106,34,.2) inset;
+  opacity:0;transform:scale(.86);transition:opacity .28s,transform .28s}
+header.header .nav-more>button:hover{transform:translateY(-1px)}
+header.header .nav-more>button:hover::before,
+header.header .nav-more.is-open>button::before,
+header.header .nav-more.is-current>button::before{opacity:1;transform:scale(1)}
+header.header .nav-more.is-current>button{font-weight:800}
+header.header .nav-more>button svg{width:11px;height:11px;transition:transform .25s}
+header.header .nav-more.is-open>button svg{transform:rotate(180deg)}
+header.header .nav-more>button:focus-visible{outline:3px solid #e0550a;outline-offset:2px}
+.nav-more-menu{
+  position:absolute;top:calc(100% + 14px);right:-10px;width:max-content;min-width:230px;white-space:nowrap;padding:8px;border-radius:22px;
+  background:linear-gradient(180deg,#fff,#fff8e6);border:1px solid rgba(255,190,50,.6);
+  box-shadow:0 22px 46px -16px rgba(224,85,10,.45),0 4px 12px rgba(224,85,10,.14);
+  opacity:0;visibility:hidden;transform:translateY(-6px) scale(.98);transform-origin:top right;
+  transition:opacity .2s,transform .25s cubic-bezier(.22,.8,.24,1),visibility 0s .25s;z-index:60}
+.nav-more.is-open .nav-more-menu{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.nav-more-menu a{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:16px;color:#3a1608;text-decoration:none;
+  font:700 13.5px/1.2 "Figtree",system-ui,sans-serif;transition:background .2s,transform .2s}
+.nav-more-menu a:hover,.nav-more-menu a:focus-visible{background:linear-gradient(180deg,#ffeaa6,#ffd160);outline:none;transform:translateX(2px)}
+.nav-more-menu a small{display:block;margin-top:3px;font-weight:600;font-size:11.5px;color:rgba(58,22,8,.62)}
+.nav-more-menu a i{flex:none;display:grid;place-content:center;width:34px;height:34px;border-radius:50%;background:#e0550a;color:#fff8e6;font-style:normal}
+.nav-more-menu a i svg{width:17px;height:17px}
+.mobile-nav .mn-group{display:block;margin:10px 0 2px;padding:0 4px;font:800 11px/1 "Figtree",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(224,85,10,.8)}
+@media(prefers-reduced-motion:reduce){.nav-more-menu,header.header .nav-more>button svg{transition:none}}

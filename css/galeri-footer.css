@@ -1,0 +1,138 @@
+/* ============================================================
+   GALERI VIDEO + FOOTER — desain v3 Dapur Mom's 4G
+   Dimuat PALING AKHIR (setelah tema-mom4g.css).
+   Hapus file ini + baris <link>-nya untuk kembali ke tampilan lama.
+   id/class yang dipakai galeri.js tetap dipertahankan.
+   ============================================================ */
+:root{--gf-red:#e0140a;--gf-red-d:#f97316;--gf-wine:#3a0600;--gf-cream:#fff3d6;--gf-cream-2:#ffe7b5;--gf-yellow:#ffd94a;--gf-ink:#3a0600}
+
+/* ───────────────────────── GALERI VIDEO v4 : "MEJA DAPUR IBU" — rapi, video pasti tampil ───────────────────────── */
+#promosi .gl-wave{display:none}
+#promosi #glAd,#promosi #glAd *,footer.ft,footer.ft *{box-sizing:border-box}
+
+/* pita lama disembunyikan, diganti pita gelombang (SVG) */
+#promosi .gl-ribbon{display:none!important}
+
+/* ===== PITA GELOMBANG MIRING ===== */
+.gl-wribbon{position:relative;width:100%;max-width:1320px;margin:clamp(8px,2vw,28px) auto clamp(-30px,-2vw,-8px);pointer-events:none;user-select:none}
+.gl-wribbon svg{display:block;width:100%;height:auto;overflow:visible}
+.gl-wribbon .gl-wtext{font:800 54px "Bricolage Grotesque","Figtree",Impact,sans-serif;letter-spacing:.02em;fill:#fff3d6;text-transform:uppercase}
+.gl-wribbon .gl-wtext .sep{fill:#ffd94a}
+
+
+/* ───────────────────────── FOOTER : teks kiri, gambar kartun kecil di kanan ───────────────────────── */
+footer.ft{
+  position:relative;isolation:isolate;overflow:hidden;margin:0;padding:clamp(56px,8vw,110px) 0 0;
+  background-color:var(--green,var(--gf-red));
+  background-image:radial-gradient(55% 40% at 14% 8%,rgba(255,217,74,.22),transparent 70%),radial-gradient(45% 45% at 92% 55%,rgba(224,85,10,.35),transparent 70%);
+  color:var(--gf-cream)}
+footer.ft .footer-word{position:absolute;left:50%;bottom:-.14em;top:auto;right:auto;z-index:-1;transform:translateX(-50%);margin:0;white-space:nowrap;pointer-events:none;user-select:none;
+  font:800 clamp(6rem,25vw,24rem)/.8 "Bricolage Grotesque","Figtree",sans-serif;letter-spacing:-.05em;color:rgba(255,243,214,.07)}
+.ft-in{width:min(1240px,calc(100% - clamp(32px,6vw,96px)));margin:0 auto}
+
+.ft-hero{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:end;gap:clamp(20px,4vw,64px);padding-bottom:0}
+.ft-top{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(18px,2.2vw,28px);padding:0 0 clamp(40px,6vw,84px);align-self:center}
+.ft-kicker{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem 1rem;border-radius:999px;background:rgba(255,243,214,.14);box-shadow:inset 0 0 0 1.5px rgba(255,243,214,.4);
+  font:800 .8rem/1 "Figtree",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gf-cream)}
+.ft-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--gf-yellow);box-shadow:0 0 0 4px rgba(255,217,74,.28)}
+.ft-top h2{margin:0;max-width:none;font:800 clamp(2.6rem,5.6vw,5.4rem)/.98 "Bricolage Grotesque","Figtree",sans-serif;letter-spacing:-.035em;color:var(--gf-cream);text-wrap:balance;text-shadow:0 5px 0 rgba(224,85,10,.35)}
+.ft-top h2 em{font-style:normal;color:var(--gf-yellow)}
+.ft-lead{margin:0;max-width:36ch;font:500 clamp(1.02rem,1.5vw,1.25rem)/1.5 "Figtree",system-ui,sans-serif;color:rgba(255,243,214,.92)}
+.ft-cta{display:flex;flex-wrap:wrap;gap:14px}
+
+/* ===== tokoh kartun: stiker besar berdiri di garis footer ===== */
+.ft-snack{position:relative;margin:0;padding:0;width:100%;max-width:700px;justify-self:end}
+.ft-stage{position:relative;padding-top:clamp(14px,3vw,30px)}
+.ft-burst{position:absolute;z-index:0;left:58%;top:50%;width:84%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+  background:repeating-conic-gradient(from 0deg,rgba(255,217,74,.34) 0 6deg,rgba(255,217,74,0) 6deg 12deg);
+  -webkit-mask:radial-gradient(circle,#000 0 20%,transparent 68%);mask:radial-gradient(circle,#000 0 20%,transparent 68%);animation:ftBurst 80s linear infinite}
+.ft-burst::after{content:"";position:absolute;inset:14%;border-radius:50%;background:radial-gradient(circle,rgba(255,226,140,.62) 0,rgba(255,170,60,.28) 42%,rgba(255,90,20,0) 72%)}
+.ft-hero-img{position:relative;z-index:1;display:block;width:100%;height:auto;aspect-ratio:1672/941;
+  filter:drop-shadow(0 0 1.5px rgba(255,243,214,.85)) drop-shadow(0 20px 22px rgba(224,85,10,.42));
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 74%,transparent 99%),linear-gradient(to left,#000 0,#000 92%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,#000 0,#000 74%,transparent 99%),linear-gradient(to left,#000 0,#000 92%,transparent 100%);
+  mask-composite:intersect}
+.ft-chip{position:absolute;z-index:3;display:inline-block;padding:.55rem .95rem .5rem;border-radius:999px;background:var(--gf-cream);color:var(--gf-red-d);
+  font:800 clamp(.78rem,1.3vw,1rem)/1 "Figtree",system-ui,sans-serif;letter-spacing:.04em;box-shadow:0 0 0 3px var(--gf-red-d),0 14px 20px -12px rgba(224,85,10,.8);animation:ftFloat 5s ease-in-out infinite}
+.ft-chip--a{left:1%;top:8%;transform:rotate(-6deg)}
+.ft-chip--b{right:0;bottom:24%;transform:rotate(5deg);background:var(--gf-yellow);animation-delay:-2.2s}
+.ft-snack-tag{position:absolute;z-index:3;left:-1%;bottom:5%;transform:rotate(-4deg);margin:0;padding:.6rem 1.05rem .55rem;border-radius:14px;background:var(--gf-red-d);color:var(--gf-cream);
+  font:800 clamp(1rem,1.9vw,1.4rem)/1.05 "Bricolage Grotesque","Figtree",sans-serif;box-shadow:0 0 0 3px var(--gf-cream),0 14px 20px -12px rgba(224,85,10,.8)}
+.ft-snack-tag span{color:var(--gf-yellow)}
+.ft-seal{position:absolute;z-index:3;right:0;top:0;width:clamp(76px,11vw,106px);aspect-ratio:1;border-radius:50%;background:var(--gf-red-d);color:var(--gf-cream);box-shadow:0 0 0 4px var(--gf-cream),0 16px 24px -14px rgba(224,85,10,.8)}
+.ft-seal svg{display:block;width:100%;height:100%;animation:ftSpin 26s linear infinite}
+.ft-seal text{font:800 13.4px "Figtree",system-ui,sans-serif;letter-spacing:.16em;fill:currentColor}
+.ft-seal b{position:absolute;inset:0;display:grid;place-items:center;font:400 clamp(1.2rem,2.2vw,1.7rem)/1 "Bagel Fat One","Bricolage Grotesque",sans-serif;color:var(--gf-yellow)}
+@keyframes ftSpin{to{transform:rotate(360deg)}}
+@keyframes ftBurst{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes ftFloat{50%{translate:0 -8px}}
+
+.ft-btn{display:inline-flex;align-items:center;gap:.65rem;min-height:56px;padding:0 1.7rem;border-radius:999px;font:800 1.05rem/1 "Figtree",system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:transform .2s}
+.ft-btn:hover{transform:translateY(-3px)}
+.ft-btn:focus-visible,.ft-link:focus-visible,.ft-up:focus-visible{outline:3px solid var(--gf-cream);outline-offset:3px}
+.ft-btn--yellow{background:var(--gf-yellow);color:var(--gf-red-d);box-shadow:0 18px 28px -14px rgba(224,85,10,.8),inset 0 0 0 1.5px rgba(255,255,255,.7)}
+.ft-btn--wa{background:#1fb855;color:#fff;box-shadow:0 18px 28px -14px rgba(0,50,10,.7),inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.ft-btn svg{width:22px;height:22px;flex:none;fill:currentColor}
+
+.ft-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:clamp(14px,2vw,24px);padding:clamp(28px,4vw,44px) 0 clamp(28px,4vw,44px);border-top:1.5px solid rgba(255,243,214,.3);align-items:stretch}
+.ft-brand{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:16px;text-decoration:none;color:inherit;padding:clamp(4px,1vw,10px)}
+.ft-brand-row{display:flex;align-items:center;gap:14px}
+.ft-brand img{width:76px;height:76px;border-radius:50%;box-shadow:0 0 0 4px var(--gf-cream),0 14px 22px -12px rgba(224,85,10,.8)}
+.ft-brand span{font:500 1rem/1.15 "Figtree",system-ui,sans-serif}
+.ft-brand b{display:block;font:800 1.7rem/1.05 "Bricolage Grotesque","Figtree",sans-serif;letter-spacing:-.02em}
+.ft-brand p{margin:0;max-width:22ch;font:700 1.55rem/1.1 "Caveat","Figtree",cursive;color:var(--gf-yellow)}
+.ft-col{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:clamp(18px,2vw,24px);border-radius:24px;background:rgba(255,243,214,.1);box-shadow:inset 0 0 0 1.5px rgba(255,243,214,.26);transition:background .25s,transform .25s}
+.ft-col:hover{background:rgba(255,243,214,.15);transform:translateY(-3px)}
+.ft-col h3{display:flex;align-items:center;gap:.6rem;margin:0 0 4px;font:800 .78rem/1.2 "Figtree",system-ui,sans-serif;color:var(--gf-yellow);letter-spacing:.14em;text-transform:uppercase}
+.ft-col h3::before{content:"";flex:none;width:22px;height:3px;border-radius:3px;background:var(--gf-yellow)}
+.ft-col address{margin:0 0 4px;font:600 1.15rem/1.45 "Figtree",system-ui,sans-serif;font-style:normal;color:var(--gf-cream)}
+.ft-link{display:inline-flex;align-items:center;gap:.6rem;margin:0;padding:.7rem 1.1rem .7rem .85rem;border-radius:999px;background:rgba(255,243,214,.14);color:var(--gf-cream);text-decoration:none;font:700 1rem/1 "Figtree",system-ui,sans-serif;box-shadow:inset 0 0 0 1.5px rgba(255,243,214,.34);transition:background .2s,color .2s,transform .2s}
+.ft-link:hover{background:var(--gf-cream);color:var(--gf-red-d);transform:translateY(-2px)}
+.ft-link svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ft-link svg.f{fill:currentColor;stroke:none}
+.ft-col:nth-child(4){flex-direction:row;flex-wrap:wrap;align-content:flex-start}
+.ft-col:nth-child(4) h3{flex:0 0 100%}
+.ft-note{margin:2px 0 0;font:500 .95rem/1.5 "Figtree",system-ui,sans-serif;color:rgba(255,243,214,.85);max-width:28ch}
+.ft-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 0 26px;border-top:1.5px solid rgba(255,243,214,.3);font:500 .95rem/1.2 "Figtree",system-ui,sans-serif;color:rgba(255,243,214,.9)}
+.ft-up{display:inline-flex;align-items:center;gap:.6rem;padding:.55rem .6rem .55rem 1.1rem;border-radius:999px;background:var(--gf-cream);color:var(--gf-red-d);text-decoration:none;font:800 .95rem/1 "Figtree",system-ui,sans-serif;transition:transform .2s}
+.ft-up:hover{transform:translateY(-3px)}
+.ft-up i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--gf-red-d);color:var(--gf-cream);font-style:normal}
+
+@media(max-width:980px){
+  .ft-hero{grid-template-columns:1fr;justify-items:center;text-align:center;gap:clamp(14px,3vw,24px)}
+  .ft-top{display:contents}
+  .ft-kicker{order:1}.ft-top h2{order:2}.ft-lead{order:3;margin-inline:auto}
+  .ft-snack{order:4;justify-self:center;max-width:640px}
+  .ft-cta{order:5;position:relative;z-index:4;justify-content:center;margin-top:clamp(-30px,-4vw,-14px);padding-bottom:clamp(30px,6vw,48px)}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .ft-brand{grid-column:1/-1;align-items:center;text-align:center;padding-bottom:6px}
+  .ft-brand-row{justify-content:center}.ft-brand p{max-width:none}
+}
+@media(max-width:560px){
+  .ft-in{width:calc(100% - 36px)}
+  .ft-top h2{font-size:clamp(2.35rem,11vw,3.1rem)}
+  .ft-stage{padding-top:34px}
+  .ft-burst{left:54%;width:100%}
+  .ft-chip--a{left:0;top:12%}.ft-chip--b{bottom:26%}
+  .ft-snack-tag{left:0;bottom:6%}
+  .ft-cta{width:100%;flex-direction:column;margin-top:-22px}
+  .ft-btn{width:100%;justify-content:center}
+  .ft-grid{grid-template-columns:1fr;gap:12px}
+  .ft-col{border-radius:22px}
+  .ft-col .ft-link{width:100%;justify-content:flex-start}
+  .ft-col:nth-child(4) .ft-link{flex:1 1 calc(50% - 6px);width:auto;justify-content:center}
+  .ft-note{max-width:none}
+  .ft-bottom{flex-direction:column;align-items:center;text-align:center;gap:14px}
+}
+@media(prefers-reduced-motion:reduce){.ft-seal svg,.ft-burst,.ft-chip{animation:none}.ft-btn,.ft-link,.ft-up,.ft-col,#promosi #glAd .gl-chip{transition:none}}
+
+/* ───────────────────────── PERFORMA (tampilan tetap, kerja browser lebih ringan) ───────────────────────── */
+/* pita gelombang: lapisan teks yang bergerak berdiri sendiri di atas lapisan statis (blur/bayangan),
+   jadi blur tidak digambar ulang tiap frame */
+.gl-wribbon .gl-wb-live{position:absolute;left:0;top:0;width:100%;height:100%;will-change:transform}
+.gl-wribbon .gl-wtext{text-rendering:optimizeSpeed}
+
+/* bagian yang di luar layar: animasi dijeda (diatur galeri-extra.js) */
+.gl-off,.gl-off *,.gl-off *::before,.gl-off *::after{animation-play-state:paused!important}
+

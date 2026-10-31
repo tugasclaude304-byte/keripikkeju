@@ -1,0 +1,91 @@
+/* ============================================================
+   GALERI VIDEO · rapi & responsif + tampilan "cover" sebelum diputar
+   Video TIDAK jalan sendiri: awalnya hanya poster + tombol putar besar.
+   Dimuat paling akhir. Hapus file ini = tampilan lama (tetap tanpa autoplay karena diatur di js/galeri-video.js).
+   ============================================================ */
+
+/* ---------- Cover sebelum diputar ---------- */
+.vx-cue{position:absolute;left:50%;bottom:clamp(14px,5%,28px);translate:-50% 0;z-index:4;padding:8px 16px;border-radius:99px;
+  background:rgba(255,248,230,.92);border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);color:var(--ink);
+  font:800 12px/1 Figtree,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;pointer-events:none;transition:opacity .3s,translate .3s}
+.vx.is-started .vx-cue{opacity:0;translate:-50% 10px}
+.vx:not(.is-started) .vx-screen::after{background:radial-gradient(120% 90% at 50% 45%,rgba(50,15,0,.1),rgba(50,15,0,.55)),linear-gradient(transparent 55%,rgba(30,8,0,.6))}
+.vx:not(.is-started) .vx-play{width:clamp(64px,11vw,96px);height:clamp(64px,11vw,96px)}
+.vx:not(.is-started) .vx-play svg{width:42%}
+.vx:not(.is-started) .vx-tap{cursor:pointer}
+.vx:not(.is-started) .vx-tap:hover .vx-play{scale:1.08}
+.vx:not(.is-started) .vx-ctrl .vx-track{opacity:.6}
+.vx-video{background:#2a1405}
+
+/* kolom grid tidak boleh melebar mengikuti isi yang bisa digeser */
+.vx-main>*{min-width:0}
+
+/* ---------- Laptop: panel samping ikut menempel saat player dilihat ---------- */
+@media(min-width:901px){
+  .vx-side{position:sticky;top:96px}
+  .vx-list{gap:12px}
+}
+
+/* ---------- Tablet & HP ---------- */
+@media(max-width:900px){
+  .vx{margin-top:34px;padding:22px 14px 0;border-width:3px}
+  .vx-head{margin-bottom:18px}
+  .vx-head h3{font-size:clamp(40px,12.4vw,68px);margin-top:10px}
+  .vx-head p{font-size:13.5px;line-height:1.5;margin-top:10px;max-width:44ch}
+  .vx-kicker{font-size:10px;padding:7px 12px}
+  .vx-main{grid-template-columns:minmax(0,1fr);gap:20px;padding-bottom:26px}
+  .vx-player,.vx-side,.vx-screen,.vx-now{min-width:0;max-width:100%}
+
+  .vx-player{padding:24px 8px 10px;border-width:3px;border-radius:22px;box-shadow:5px 7px 0 var(--ink)}
+  .vx-screen{border-width:2.5px;border-radius:14px}
+  .vx-chip{left:8px;top:8px;padding:6px 10px;font-size:10px}
+  .vx-cue{font-size:10.5px;padding:7px 13px}
+
+  .vx-ctrl{gap:8px;padding:10px 0 2px}
+  .vx-btn{width:40px;height:40px;border-width:2.5px}
+  .vx-btn svg{width:16px}
+  .vx-time{display:inline;font-size:11px}
+  .vx-time#vxDur{display:none}
+  .vx-track{height:30px}
+
+  /* bagian video: satu baris yang bisa digeser */
+  .vx-chaps{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;gap:6px;margin:0 -8px;padding:8px 8px 4px;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .vx-chaps::-webkit-scrollbar{display:none}
+  .vx-ch{flex:none;scroll-snap-align:start;padding:3px 11px 3px 3px;font-size:11.5px;white-space:nowrap}
+  .vx-ch img{width:26px;height:26px}
+
+  .vx-now{grid-template-columns:1fr;gap:10px;margin-top:10px;padding:12px 4px 2px}
+  .vx-num{display:none}
+  .vx-now b{font-size:clamp(22px,6.4vw,28px)}
+  .vx-now b::after{width:46px;height:5px;margin-top:7px}
+  .vx-now p{font-size:13.5px;line-height:1.45;max-width:none}
+  .vx-cta{justify-self:stretch;padding:13px 16px;font-size:14px}
+
+  /* daftar putar: kartu yang bisa digeser ke samping */
+  .vx-pl{margin-bottom:10px;font-size:11px}
+  .vx-list{display:flex;overflow-x:auto;overflow-y:hidden;gap:12px;margin:0 -14px;padding:2px 14px 14px;scroll-snap-type:x mandatory;scroll-padding-inline:14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .vx-list::-webkit-scrollbar{display:none}
+  .vx-list li{flex:0 0 76%;max-width:300px;scroll-snap-align:start}
+  .vx-it{grid-template-columns:1fr;gap:9px;padding:7px 7px 12px;border-radius:18px;box-shadow:4px 5px 0 var(--ink);height:100%;align-items:start}
+  .vx-it:hover,.vx-it.on{box-shadow:5px 6px 0 var(--ink)}
+  .vx-it b{font-size:19px}
+  .vx-it p{font-size:12.5px}
+  .vx-it>span:last-of-type{padding-inline:3px}
+}
+
+/* HP kecil */
+@media(max-width:420px){
+  .vx{padding-inline:10px}
+  .vx-list{margin-inline:-10px;padding-inline:10px;scroll-padding-inline:10px}
+  .vx-list li{flex-basis:80%}
+  .vx-btn{width:38px;height:38px}
+  .vx-head h3{font-size:clamp(38px,12vw,52px)}
+}
+
+/* HP posisi miring / layar pendek */
+@media(max-width:900px) and (orientation:landscape) and (max-height:520px){
+  .vx-main{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:start}
+  .vx-list{display:grid;overflow:visible;margin:0;padding:0}
+  .vx-list li{max-width:none}
+  .vx-it{grid-template-columns:96px 1fr}
+}

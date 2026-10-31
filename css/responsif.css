@@ -1,0 +1,96 @@
+/* ───────── RESPONSIF · perbaikan akhir (dimuat paling terakhir) ─────────
+   Memastikan website nyaman di HP kecil (320px), HP biasa, tablet, laptop, dan layar lebar.
+   Hapus file ini + barisnya di index.html untuk kembali ke versi sebelumnya. */
+
+/* dasar: tidak ada geser samping, media tidak melebihi layar, area aman notch */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:clip}
+img,video,svg,canvas{max-width:100%}
+.container{width:min(1200px,calc(100% - max(6vw,24px)))}
+@supports(padding:max(0px)){
+  .footer{padding-bottom:max(30px,env(safe-area-inset-bottom))}
+  .motion-toggle{left:max(12px,env(safe-area-inset-left));bottom:max(12px,env(safe-area-inset-bottom))}
+}
+
+/* ───── HP & tablet kecil ───── */
+@media(max-width:800px){
+  /* tiga chip rasa: kolom boleh menyusut (tanpa ini teks "Keripik Bawang" terpotong di kanan) */
+  .hero .hero-choices{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) minmax(0,1fr)}
+  .hero .hero-choice{min-width:0;overflow:visible}
+  #beranda #heroChoices .hero-choice{min-width:0}
+  #beranda #heroChoices .hero-choice .lbl-full{min-width:0;white-space:normal;overflow-wrap:break-word;word-break:normal;hyphens:none;font-size:clamp(9.5px,2.75vw,11.5px);line-height:1.12;letter-spacing:0}
+  .hero .hero-choice img{width:clamp(22px,6.4vw,30px);height:auto;aspect-ratio:4/5;flex:none}
+
+  /* teks bawah hero: sisakan ruang untuk tombol "jeda gerak" */
+  .hero .hero-bottom{padding-left:44px;gap:10px;align-items:center}
+  .hero .hero-bottom>span{max-width:none;flex:1 1 0;min-width:0;font-size:clamp(7.5px,2.15vw,9.5px);letter-spacing:.04em;line-height:1.3}
+  .hero .hero-bottom p{flex:none;white-space:nowrap}
+}
+
+/* ───── HP kecil ───── */
+@media(max-width:420px){
+  h2{font-size:clamp(32px,10.5vw,44px)}
+  .btn{padding-inline:20px;gap:14px}
+  .section-pad{padding:68px 0}
+}
+@media(max-width:340px){
+  .hero .hero-choice{padding-inline:5px;gap:4px;border-radius:16px}
+  #beranda #heroChoices .hero-choice .lbl-full{font-size:9.5px;letter-spacing:0}
+  .hero .hero-bottom{padding-left:40px}
+  .hero .hero-bottom>span{display:none}
+  .hero .hero-bottom{justify-content:flex-end}
+}
+
+/* ───── layar landscape pendek (HP miring) ───── */
+@media(max-height:520px) and (orientation:landscape){
+  .section-pad{padding:56px 0}
+}
+
+/* ───── layar sangat lebar: batasi agar tidak melar ───── */
+@media(min-width:1800px){
+  .container{width:min(1360px,80%)}
+}
+
+/* ───── Galeri video di HP: tersusun ke bawah, tanpa geser samping ───── */
+@media(max-width:800px){
+  .vx-chaps{display:flex;flex-direction:column;flex-wrap:nowrap;overflow:visible;margin:0;padding:8px 0 4px;gap:8px;scroll-snap-type:none}
+  .vx-ch{width:100%;white-space:normal;justify-content:flex-start;text-align:left;font-size:13px;padding:5px 14px 5px 5px}
+  .vx-ch img{width:32px;height:32px}
+  .vx-list{display:grid;grid-template-columns:1fr;overflow:visible;margin:0;padding:2px 0 8px;gap:14px;scroll-snap-type:none}
+  .vx-list li{flex:none;max-width:none;width:100%}
+}
+
+/* ───── Galeri video di HP: ukuran dikecilkan supaya semuanya muat di layar ───── */
+@media(max-width:800px){
+  .vx-chaps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:6px 0 2px}
+  .vx-ch{min-width:0;font-size:11.5px;line-height:1.15;padding:3px 8px 3px 3px;gap:6px}
+  .vx-ch img{width:24px;height:24px;flex:none}
+  .vx-ch small,.vx-ch i{font-size:10px}
+
+  .vx-list{gap:8px;padding:2px 0 4px}
+  .vx-list li:nth-child(n) .vx-it{rotate:0deg}
+  .vx-it{display:grid;grid-template-columns:minmax(0,38%) minmax(0,1fr);gap:10px;align-items:center;padding:5px;border-width:2px;border-radius:14px;box-shadow:3px 4px 0 var(--ink);height:auto}
+  .vx-it:hover,.vx-it.on{box-shadow:3px 4px 0 var(--ink)}
+  .vx-it img,.vx-it picture{border-radius:9px}
+  .vx-it small{font-size:9px;letter-spacing:.1em}
+  .vx-it b{font-size:15px;margin:2px 0 0}
+  .vx-it p{display:none}
+  .vx-it .vx-dots,.vx-it .vx-segs{margin-top:4px}
+}
+
+/* ───── Karakter footer: gadis berhijab + 3 produk ───── */
+.ft-snack{max-width:600px}
+.ft-hero-img{aspect-ratio:1200/1195;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 93%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 93%,transparent 100%);
+  -webkit-mask-composite:source-over;mask-composite:add}
+.ft-chip--a{left:2%;top:6%}
+.ft-snack-tag{left:0;bottom:auto;top:21%}
+.ft-chip--b{right:2%;bottom:auto;top:41%}
+.ft-seal{right:1%;top:3%}
+@media(max-width:980px){.ft-snack{max-width:520px}}
+@media(max-width:560px){
+  .ft-snack{max-width:100%}
+  .ft-chip--a{left:0;top:5%}
+  .ft-snack-tag{left:0;top:19%;bottom:auto}
+  .ft-chip--b{right:0;top:40%;bottom:auto}
+}

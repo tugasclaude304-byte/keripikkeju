@@ -1,0 +1,107 @@
+/* ============================================================
+   LOADING · KUNING MEWAH — kuning cerah, bingkai tipis, medali logo krem, huruf merah timbul.
+   Menimpa css/loader.css (dimuat sesudahnya). Hapus file ini + barisnya di index.html untuk kembali ke loading lama.
+   ============================================================ */
+#mom-loader{--ld-red:#e0140a;--ld-red-d:#b50d05;--ld-cream:#fff6df;--ld-sun:#ffd24a;--ld-edge:#ffbf1f;--ld-orange:#f57a12}
+
+/* ---------- Latar kuning ---------- */
+#mom-loader .ld-stage{
+  background:
+    radial-gradient(ellipse 50% 40% at 50% 40%,rgba(255,252,230,.95),transparent 72%),
+    radial-gradient(ellipse 90% 80% at 50% 45%,#ffe468 0%,#ffd43c 50%,var(--ld-edge) 100%);
+}
+#mom-loader .ld-rays{
+  background:repeating-conic-gradient(from 0deg,rgba(255,250,225,.5) 0 4.5deg,transparent 4.5deg 12deg);
+  -webkit-mask-image:radial-gradient(circle,#000 0,rgba(0,0,0,.5) 20%,transparent 48%);mask-image:radial-gradient(circle,#000 0,rgba(0,0,0,.5) 20%,transparent 48%);
+  animation-duration:80s;
+}
+#mom-loader .ld-dots{
+  background-image:radial-gradient(rgba(224,85,10,.16) 1.2px,transparent 1.8px);background-size:24px 24px;
+  -webkit-mask-image:radial-gradient(ellipse at center,transparent 28%,#000 100%);mask-image:radial-gradient(ellipse at center,transparent 28%,#000 100%);
+}
+#mom-loader .ld-glow{width:min(88vmin,720px);background:radial-gradient(circle,rgba(255,252,232,.95),rgba(255,248,210,.35) 46%,rgba(255,248,210,0) 70%)}
+
+/* kilau putih berkelip */
+#mom-loader .ld-stage::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle,#fff 0 1.4px,transparent 2.6px) 18% 24%/14px 14px no-repeat,
+    radial-gradient(circle,#fff 0 1.2px,transparent 2.4px) 81% 19%/14px 14px no-repeat,
+    radial-gradient(circle,#fff 0 1px,transparent 2px) 69% 73%/14px 14px no-repeat,
+    radial-gradient(circle,#fff 0 1.6px,transparent 2.8px) 27% 78%/14px 14px no-repeat,
+    radial-gradient(circle,#fff 0 1px,transparent 2px) 91% 52%/14px 14px no-repeat,
+    radial-gradient(circle,#fff 0 1.2px,transparent 2.4px) 8% 55%/14px 14px no-repeat;
+  animation:ldTwinkle 3.4s ease-in-out infinite alternate;
+}
+@keyframes ldTwinkle{from{opacity:.2}to{opacity:1}}
+
+/* bingkai tipis ganda */
+#mom-loader .ld-stage::after{
+  content:"";position:absolute;inset:clamp(10px,2.4vmin,24px);z-index:1;pointer-events:none;border-radius:clamp(14px,3vmin,26px);
+  border:1.5px solid rgba(224,20,10,.55);
+  box-shadow:inset 0 0 0 5px rgba(255,246,223,.0),inset 0 0 0 6px rgba(255,246,223,.75),inset 0 0 70px rgba(245,122,18,.22);
+  animation:ldFrame 1s ease .1s both;
+}
+@keyframes ldFrame{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+
+/* ---------- Remah: lebih sedikit & rapi ---------- */
+#mom-loader .ld-pc img{filter:drop-shadow(0 12px 10px rgba(224,85,10,.32))}
+#mom-loader .ld-pc:nth-child(n+7){--u:.8}
+#mom-loader .ld-pc:nth-child(n+7) img{filter:blur(1.2px) drop-shadow(0 8px 8px rgba(224,85,10,.28));opacity:.8}
+#mom-loader .ld-pc:nth-child(n+11){display:none}
+
+/* ---------- Medali logo ---------- */
+#mom-loader .ld-badge::before{
+  inset:16%;
+  background:radial-gradient(circle at 35% 26%,#fffffa,#fff6df 58%,#ffe6ae);
+  box-shadow:0 0 0 3px #fff,0 0 0 5px var(--ld-red),0 0 0 7px #fff6df,0 18px 36px -10px rgba(224,85,10,.6),inset 0 -8px 16px rgba(255,170,40,.3);
+}
+#mom-loader .ld-dash{inset:-9%;border:1.5px dashed rgba(224,20,10,.5)}
+#mom-loader .ld-ring circle{stroke-width:3.6}
+#mom-loader .ld-ring .trk{stroke:rgba(224,20,10,.16)}
+#mom-loader .ld-ring .bar{stroke:var(--ld-red);filter:drop-shadow(0 0 5px rgba(224,20,10,.45))}
+
+/* ---------- Teks ---------- */
+#mom-loader .ld-eyebrow{color:var(--ld-red);letter-spacing:.62em;text-indent:.62em}
+#mom-loader .ld-eyebrow::before,#mom-loader .ld-eyebrow::after{height:1.5px;opacity:1;background:linear-gradient(90deg,transparent,var(--ld-red))}
+#mom-loader .ld-eyebrow::after{background:linear-gradient(90deg,var(--ld-red),transparent)}
+
+#mom-loader .ld-title{text-shadow:none}
+#mom-loader .ld-title .c{
+  color:transparent;-webkit-text-fill-color:transparent;padding-bottom:.04em;
+  background:linear-gradient(180deg,#ff4a22 0%,#e0140a 55%,#bd0c04 100%);-webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 2px 0 #fff6df) drop-shadow(0 5px 0 #fff6df) drop-shadow(0 8px 0 rgba(245,122,18,.35)) drop-shadow(0 14px 14px rgba(224,85,10,.25));
+}
+#mom-loader .ld-tag{color:var(--ld-red-d);font-size:clamp(22px,4.8vmin,32px);text-shadow:0 2px 0 rgba(255,246,223,.8)}
+
+/* ---------- Progres ---------- */
+#mom-loader .ld-load{width:min(340px,78vw);margin-top:clamp(10px,2.6vh,24px)}
+#mom-loader .ld-bar{
+  height:9px;background:rgba(224,20,10,.14);
+  box-shadow:inset 0 1px 3px rgba(224,85,10,.35),0 0 0 2px rgba(255,246,223,.9),0 0 0 3.5px rgba(224,20,10,.45);
+}
+#mom-loader .ld-bar i{background:linear-gradient(90deg,#ff8a2a,#e0140a);box-shadow:0 0 12px rgba(224,20,10,.5)}
+#mom-loader .ld-bar i::after{
+  background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.75) 50%,transparent 70%) 0 0/60px 100% no-repeat;
+  animation:ldSheen 1.5s ease-in-out infinite;
+}
+@keyframes ldSheen{from{background-position:-60px 0}to{background-position:calc(100% + 60px) 0}}
+#mom-loader .ld-meta{margin-top:14px;color:var(--ld-red-d);font-size:11px;letter-spacing:.14em}
+#mom-loader .ld-pct{color:var(--ld-red);font-size:17px}
+
+/* ---------- Tepi tirai & penutup ---------- */
+#mom-loader .ld-wave{
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 64' preserveAspectRatio='none'%3E%3Cpath d='M0 0H160V26C120 62 120 62 80 26S40 -10 0 26Z' fill='%23ffbf1f'/%3E%3Cpath d='M0 26C40 -10 40 -10 80 26S120 62 160 26' fill='none' stroke='%23e0140a' stroke-opacity='.55' stroke-width='2'/%3E%3C/svg%3E") repeat-x 0 0/200px 64px;
+}
+#mom-loader.is-ready .ld-badge{animation:ldDoneLuxe .8s var(--ld-pop) both}
+@keyframes ldDoneLuxe{0%{transform:scale(1);filter:none}40%{transform:scale(1.09);filter:drop-shadow(0 0 24px rgba(255,252,230,.95))}100%{transform:scale(1);filter:none}}
+
+/* ---------- HP ---------- */
+@media(max-width:600px){
+  #mom-loader .ld-eyebrow{letter-spacing:.5em;text-indent:.5em}
+  #mom-loader .ld-pc:nth-child(n+9){display:none}
+  #mom-loader .ld-title{font-size:clamp(38px,12.5vw,56px)}
+  #mom-loader .ld-load{width:min(300px,76vw)}
+}
+@media(max-height:560px){#mom-loader .ld-pc:nth-child(n+7){display:none}}
+@media(prefers-reduced-motion:reduce){#mom-loader .ld-stage::before,#mom-loader .ld-stage::after{animation:none!important}}

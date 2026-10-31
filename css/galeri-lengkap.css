@@ -1,0 +1,90 @@
+/* ============================================================
+   HALAMAN GALERI SELENGKAPNYA — kuning · krim · oren (selaras beranda)
+   ============================================================ */
+:root{--ink:#e0550a;--ink-d:#b9440a;--red:#e0140a;--y1:#ffd21c;--y2:#ffbf00;--cream:#fff8e6;--brown:#3a1608}
+html{scroll-behavior:smooth}
+body.gl-page{margin:0;background:#fffdf7;color:var(--brown);font-family:"Figtree",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.gl-page *,.gl-page *::before,.gl-page *::after{box-sizing:border-box}
+.gl-skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--ink);color:#fff;padding:10px 16px;border-radius:99px;font-weight:800}
+.gl-skip:focus{left:12px}
+
+/* ---------- hero ---------- */
+.gl-hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(120px,15vw,170px) clamp(18px,5vw,64px) clamp(70px,9vw,120px);
+  background:radial-gradient(90% 80% at 25% 30%,#ffe35a 0%,transparent 70%),linear-gradient(160deg,var(--y1),var(--y2))}
+.gl-hero::before{content:"";position:absolute;z-index:-1;left:-40%;top:-90%;width:140%;aspect-ratio:1;pointer-events:none;
+  background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,.3) 0 6deg,transparent 6deg 12deg);
+  -webkit-mask:radial-gradient(circle,#000 0,transparent 62%);mask:radial-gradient(circle,#000 0,transparent 62%);animation:glSpin 90s linear infinite}
+.gl-hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.14;
+  background:radial-gradient(var(--ink) 1.3px,transparent 1.6px) 0 0/16px 16px;-webkit-mask:linear-gradient(200deg,#000,transparent 50%);mask:linear-gradient(200deg,#000,transparent 50%)}
+@keyframes glSpin{to{transform:rotate(360deg)}}
+.gl-wrap{max-width:1200px;margin:0 auto;position:relative}
+.gl-kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;background:var(--ink);color:var(--y1);
+  font:800 11px/1 "Figtree",sans-serif;letter-spacing:.2em;transform:rotate(-2deg);text-transform:uppercase}
+.gl-kicker i{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 0 3px rgba(224,20,10,.35);animation:glBlink 1.2s steps(2) infinite}
+@keyframes glBlink{50%{opacity:.25}}
+.gl-hero h1{margin:16px 0 0;font:400 clamp(48px,9.4vw,128px)/.92 Anton,Impact,"Arial Narrow",sans-serif;text-transform:uppercase;color:var(--ink);letter-spacing:.01em}
+.gl-hero h1 em{display:block;font-style:normal;color:var(--cream);text-shadow:.04em .05em 0 var(--ink),-.012em -.012em 0 var(--ink),.012em -.012em 0 var(--ink)}
+.gl-hero h1{padding-right:clamp(0px,14vw,190px)}
+.gl-lead{max-width:560px;margin:clamp(18px,2.4vw,28px) 0 0;font:600 clamp(15px,1.5vw,18px)/1.55 "Figtree",sans-serif;color:var(--brown)}
+.gl-badge{position:absolute;right:0;top:-6px;width:clamp(92px,13vw,160px);aspect-ratio:1;display:grid;place-items:center;text-align:center;animation:glWob 6s ease-in-out infinite}
+.gl-badge::before{content:"";position:absolute;inset:0;background:var(--red);animation:glSpin 22s linear infinite;
+  clip-path:polygon(50% 0,59% 12%,73% 6%,77% 21%,92% 22%,88% 37%,100% 46%,90% 58%,97% 72%,82% 77%,80% 92%,65% 88%,55% 100%,45% 88%,30% 96%,24% 82%,8% 80%,12% 65%,0% 54%,10% 42%,4% 27%,19% 23%,22% 8%,37% 13%)}
+.gl-badge span{position:relative;font:800 clamp(9px,1.1vw,13px)/1.15 "Figtree",sans-serif;letter-spacing:.12em;color:var(--cream)}
+.gl-badge b{display:block;font:400 clamp(34px,5vw,64px)/.9 Anton,Impact,sans-serif;letter-spacing:0;color:var(--y1)}
+@keyframes glWob{0%,100%{translate:0 0}50%{translate:0 8px}}
+.gl-wave{position:absolute;left:0;right:0;bottom:-1px;height:clamp(36px,6vw,80px);color:#fffdf7;pointer-events:none}
+.gl-wave svg{display:block;width:100%;height:100%}
+
+/* ---------- filter ---------- */
+.gl-main{padding:clamp(10px,2vw,24px) clamp(16px,4vw,48px) clamp(60px,8vw,110px)}
+.gl-filter{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:0 auto clamp(22px,3vw,38px);max-width:1200px}
+.gl-chips{display:flex;flex-wrap:wrap;gap:10px}
+.gl-chip{cursor:pointer;border:3px solid var(--ink);background:var(--cream);color:var(--ink);padding:10px 18px;border-radius:99px;
+  font:800 13.5px/1 "Figtree",sans-serif;box-shadow:3px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s,background .2s,color .2s}
+.gl-chip:hover{transform:translate(-1px,-1px);box-shadow:4px 5px 0 var(--ink)}
+.gl-chip:active{transform:translate(2px,3px);box-shadow:1px 1px 0 var(--ink)}
+.gl-chip[aria-pressed=true]{background:var(--ink);color:var(--y1)}
+.gl-chip:focus-visible,.gl-card:focus-visible,.gl-lb button:focus-visible,.gl-btn:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.gl-count{font:800 12px/1 "Figtree",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(58,22,8,.7)}
+
+/* ---------- grid (masonry) ---------- */
+.gl-grid{max-width:1200px;margin:0 auto;column-count:3;column-gap:clamp(14px,2vw,26px)}
+.gl-card{position:relative;display:block;width:100%;margin:0 0 clamp(14px,2vw,26px);padding:0;border:4px solid var(--ink);border-radius:clamp(18px,2vw,26px);overflow:hidden;
+  background:var(--cream);box-shadow:6px 8px 0 var(--ink);cursor:zoom-in;break-inside:avoid;-webkit-column-break-inside:avoid;
+  transition:transform .35s cubic-bezier(.2,.9,.2,1),box-shadow .35s;opacity:0;translate:0 24px;animation:glIn .6s cubic-bezier(.2,.9,.2,1) forwards;animation-delay:calc(var(--i,0)*45ms)}
+.gl-card:hover{transform:translateY(-4px);box-shadow:9px 12px 0 var(--ink)}
+.gl-card img{display:block;width:100%;height:auto;background:#f1e3c6}
+.gl-card figcaption{position:absolute;left:10px;bottom:10px;padding:6px 11px;border-radius:99px;background:var(--y1);color:var(--ink-d);
+  font:800 11px/1 "Figtree",sans-serif;letter-spacing:.12em;text-transform:uppercase;box-shadow:2px 3px 0 var(--ink)}
+.gl-card[hidden]{display:none}
+@keyframes glIn{to{opacity:1;translate:0 0}}
+.gl-empty{max-width:1200px;margin:0 auto;text-align:center;font-weight:700}
+
+/* ---------- CTA ---------- */
+.gl-cta{max-width:1200px;margin:clamp(40px,6vw,80px) auto 0;padding:clamp(26px,4vw,48px);border:4px solid var(--ink);border-radius:clamp(24px,3vw,40px);
+  background:linear-gradient(160deg,var(--y1),var(--y2));box-shadow:9px 11px 0 var(--ink);display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.gl-cta h2{margin:0;font:400 clamp(34px,5vw,62px)/.95 Anton,Impact,sans-serif;text-transform:uppercase;color:var(--ink)}
+.gl-cta h2 em{font-style:normal;color:var(--cream);text-shadow:.04em .05em 0 var(--ink)}
+.gl-cta p{margin:10px 0 0;font-weight:600;max-width:460px}
+.gl-actions{display:flex;flex-wrap:wrap;gap:12px}
+.gl-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:99px;border:3px solid var(--ink);text-decoration:none;
+  font:800 14px/1 "Figtree",sans-serif;box-shadow:4px 5px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.gl-btn:hover{transform:translate(-1px,-1px);box-shadow:5px 6px 0 var(--ink)}
+.gl-btn:active{transform:translate(3px,4px);box-shadow:1px 1px 0 var(--ink)}
+.gl-btn.is-main{background:var(--ink);color:var(--y1)}
+.gl-btn.is-alt{background:var(--cream);color:var(--ink)}
+.gl-foot{padding:26px 16px 34px;text-align:center;font-size:12.5px;font-weight:600;color:rgba(58,22,8,.65)}
+
+/* ---------- lightbox ---------- */
+.gl-lb{position:fixed;inset:0;height:100vh;height:100dvh;grid-template-rows:minmax(0,1fr) auto;z-index:200;display:grid;grid-template-rows:1fr auto;padding:clamp(12px,3vw,32px);background:rgba(58,22,8,.88);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.gl-lb.is-open{opacity:1;visibility:visible;transition-delay:0s}
+.gl-lb-stage{min-height:0;display:grid;place-items:center;position:relative}
+.gl-lb-stage img{max-width:100%;max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px);width:auto;height:auto;object-fit:contain;border:4px solid var(--y1);border-radius:20px;box-shadow:8px 10px 0 var(--ink);background:var(--cream)}
+.gl-lb-bar{display:flex;align-items:center;justify-content:center;gap:14px;padding-top:16px;color:var(--cream);font:800 12px/1 "Figtree",sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.gl-lb button{cursor:pointer;display:grid;place-content:center;width:48px;height:48px;border-radius:50%;border:3px solid var(--ink);background:var(--y1);color:var(--ink);font:800 22px/1 "Figtree",sans-serif;box-shadow:3px 4px 0 var(--ink)}
+.gl-lb button:active{transform:translate(2px,3px);box-shadow:1px 1px 0 var(--ink)}
+.gl-lb-close{position:absolute;right:0;top:0}
+@media(max-width:900px){.gl-grid{column-count:2}.gl-badge{display:none}}
+@media(max-width:520px){.gl-grid{column-count:1}.gl-card{box-shadow:5px 6px 0 var(--ink)}.gl-count{display:none}}
+@media(prefers-reduced-motion:reduce){.gl-card{animation:none;opacity:1;translate:0 0}.gl-hero::before,.gl-badge,.gl-badge::before,.gl-kicker i{animation:none}html{scroll-behavior:auto}}

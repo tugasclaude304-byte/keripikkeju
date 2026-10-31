@@ -1,0 +1,45 @@
+/* ============================================================
+   MENU · SIMPEL & MEWAH — animasi dikurangi, tulisan panjang dibuang.
+   Dibuang: pita berjalan, kata raksasa di belakang, tulisan cincin berputar, statistik,
+   paragraf pengantar, remah melayang, sinar berputar. Sisa: judul, kemasan, pilih rasa, tiket harga.
+   Pasangan: js/menu.js (mode ringan: tanpa loop rAF). Hapus file ini untuk kembali ke tampilan lama.
+   ============================================================ */
+.menu-section .rs-rows,.menu-section .rs-ring,.menu-section .rs-cv,.menu-section .rs-marq,
+.menu-section .rs-lead,.menu-section .rs-stats,.menu-section .rs-foot,
+.menu-section .mk-rays,.menu-section .mk-bit,.menu-section .mn-bub,.menu-section .rs-glare{display:none!important}
+.menu-section *,.menu-section *::before,.menu-section *::after{will-change:auto!important}
+.menu-section .mk-dash,.menu-section .rs-eb i,.menu-section .rs-hint svg,.menu-section .rs-mu b{animation:none!important}
+
+/* latar: kuning krem halus, tanpa tekstur berat */
+.menu-section{background-image:radial-gradient(ellipse 60% 46% at 50% 46%,rgba(255,250,224,.95),transparent 72%),linear-gradient(180deg,#ffd84a 0%,#ffc82f 100%)}
+.menu-section::before,.menu-section::after{opacity:.12}
+
+/* kepala: satu judul bersih */
+.menu-section .rs-head{gap:14px;margin-bottom:clamp(8px,2vw,20px)}
+.menu-section .rs-eyebrow{transform:none;filter:none}
+.menu-section .rs-eb{letter-spacing:.2em;font-size:12px;font-weight:800;text-transform:uppercase;color:#b3380a;background:rgba(255,255,255,.7);box-shadow:inset 0 0 0 1px rgba(179,56,10,.25)}
+.menu-section .rs-title{font-size:clamp(34px,5.4vw,72px);line-height:1.02;letter-spacing:.01em;text-shadow:0 .035em 0 rgba(255,255,255,.7)}
+
+/* panggung: kemasan jadi pusat perhatian, bayangan lembut */
+.menu-section .rs-stage{cursor:default}
+.menu-section .rs-tilt img{filter:drop-shadow(0 26px 22px rgba(120,45,0,.28))}
+.menu-section .rs-hint{background:rgba(255,255,255,.78);color:#b3380a;font-size:12.5px;box-shadow:inset 0 0 0 1px rgba(179,56,10,.2)}
+.menu-section .rs-nav{box-shadow:0 8px 18px -8px rgba(120,45,0,.45);transition:transform .2s}
+.menu-section .rs-nav:hover{transform:scale(1.06)}
+
+/* dock pilih rasa */
+.menu-section .rs-dock{background:rgba(255,255,255,.88);box-shadow:0 14px 30px -16px rgba(120,45,0,.5),inset 0 0 0 1px rgba(224,160,32,.55);-webkit-backdrop-filter:none;backdrop-filter:none}
+
+/* tiket harga: krem, garis emas tipis, nama lebih kecil dan elegan */
+.menu-section .rs-tk{filter:none}
+.menu-section .rs-ticket{background:#fffaf0;box-shadow:0 26px 44px -26px rgba(120,45,0,.55),0 0 0 1px rgba(224,160,32,.6),inset 0 0 0 5px #fffaf0,inset 0 0 0 6px rgba(224,160,32,.35)}
+.menu-section .rs-big{font-size:clamp(40px,4.6vw,72px)}
+.menu-section .rs-cta{transition:transform .2s,filter .2s}
+.menu-section .rs-cta:hover{transform:translateY(-2px);filter:brightness(1.05)}
+
+/* HP: lebih ringan lagi */
+@media(max-width:700px){
+  .menu-section .rs-title{font-size:clamp(30px,9vw,44px)}
+  .menu-section .rs-hint{display:none}
+  .menu-section .rs-big{font-size:clamp(38px,12vw,56px)}
+}

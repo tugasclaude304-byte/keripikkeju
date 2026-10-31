@@ -1,0 +1,56 @@
+/* ============================================================
+   KEMASAN · TARIKAN — tuas tarik ada DI DALAM foto/panggung.
+   Tarik ke kanan: keripik naik mengisi plastik, plastik berikutnya muncul (250 g → 1 kg),
+   gelembung di tuas menghitung berat yang berjalan naik. Lepas → masuk ke pesanan.
+   Hapus file ini + pindahkan #kxRail kembali ke .kx-ctl untuk kembali ke tampilan lama.
+   ============================================================ */
+.kx-stage{--kw:56px;--pad:clamp(16px,4.2%,34px)}
+.kx-stage .kx-rail{display:block;position:absolute;left:var(--pad);right:var(--pad);bottom:calc(var(--pad)*.6 + 20px);height:var(--kw);margin:0;z-index:30;touch-action:pan-y;cursor:grab}
+.kx-stage .kx-track{height:26px;margin-top:-13px;background:linear-gradient(180deg,#e8260f,#c70f06);
+  box-shadow:inset 0 3px 6px rgba(0,0,0,.45),0 0 0 3px #fff,0 0 0 5px rgba(224,160,32,.75),0 12px 18px -8px rgba(224,85,10,.75)}
+.kx-stage .kx-teeth{opacity:.55;background:repeating-linear-gradient(90deg,#fff3c4 0 3px,transparent 3px 8px)}
+.kx-stage .kx-open{box-shadow:0 0 18px rgba(255,200,60,.8)}
+
+/* penanda berat di bawah rel */
+.kx-notch::after{content:attr(data-w);position:absolute;left:50%;top:calc(var(--kw)/2 + 7px);translate:-50% 0;
+  font:800 11px/1 "Figtree",sans-serif;letter-spacing:.02em;color:#c70f06;white-space:nowrap;pointer-events:none}
+
+/* petunjuk di atas rel (hilang setelah disentuh) */
+.kx-stage .kx-pull{display:inline-flex!important;align-items:center;gap:6px;left:calc(var(--kw) + 14px);top:50%;translate:0 -50%;
+  font:800 12.5px/1 "Figtree",sans-serif;color:#fff;text-shadow:0 1px 2px rgba(120,10,0,.55);z-index:2}
+
+/* tuas + denyut ajakan */
+.kx-stage .kx-knob{border-width:4px}
+.kx-knob::before{content:"";position:absolute;inset:-4px;border-radius:50%;border:3px solid rgba(255,255,255,.95);opacity:0;pointer-events:none}
+.kx:not(.is-touched) .kx-knob::before{animation:kxPing 1.8s ease-out infinite}
+@keyframes kxPing{0%{opacity:.95;transform:scale(1)}100%{opacity:0;transform:scale(1.75)}}
+
+/* gelembung berat berjalan */
+.kx-bub{position:absolute;left:50%;bottom:calc(100% + 9px);translate:-50% 0;padding:6px 12px;border-radius:99px;background:#e0140a;color:#fff;
+  font:800 13.5px/1 "Figtree",sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap;pointer-events:none;
+  box-shadow:0 8px 14px -6px rgba(224,20,10,.75),0 0 0 2px #fff;transition:scale .2s}
+.kx-bub::after{content:"";position:absolute;left:50%;top:100%;margin-left:-5px;border:5px solid transparent;border-top-color:#e0140a}
+.kx-rail.is-drag .kx-bub{scale:1.14}
+
+/* foto bisa diketuk di daftar → pratinjau pindah rasa */
+.kq-img,.kq-nm{cursor:pointer}
+
+/* angka besar naik di atas rel (laptop) */
+@media(min-width:901px){.kx-stage .kx-count{bottom:calc(var(--kw) + 70px)}}
+
+/* HP: panggung dibuat lebih tinggi & penuh lebar supaya plastik + tuas lega */
+@media(max-width:900px){
+  .kx .kx-stage{width:100%;max-width:440px;height:clamp(340px,102vw,440px)!important;aspect-ratio:auto;margin-inline:auto}
+}
+@media(max-width:480px){
+  .kx-stage{--kw:48px;--pad:16px}
+  .kx-stage .kx-track{height:22px;margin-top:-11px}
+  .kx-stage .kx-pull{font-size:11.5px}
+  .kx-bub{font-size:12.5px;padding:5px 10px}
+  .kx-notch::after{font-size:10px}
+}
+@media(max-width:360px){
+  .kx-stage{--kw:44px}
+  .kx-stage .kx-pull{font-size:10.5px;gap:4px}
+}
+@media(prefers-reduced-motion:reduce){.kx:not(.is-touched) .kx-knob::before{animation:none}}

@@ -1,0 +1,82 @@
+/* Galeri (#promosi) — dinding poster polaroid, pita, bioskop mini, dan lightbox.
+   Semua selector diawali .gl / .gl-* supaya tidak menyentuh section lain. */
+.gl,dialog.gl-lb{--gl-paper:#fffaf0;--gl-hand:'Caveat','Bradley Hand','Segoe Print',cursive}.gl{overflow:hidden}
+.gl .container{position:relative}
+
+/* Judul sub-bagian */
+.gl-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:6px 24px;margin:6px 0 18px}
+.gl-kicker{flex-basis:100%;font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--red)}
+.gl-head h3{font-size:clamp(28px,4vw,46px);letter-spacing:-.04em}
+.gl-head p{font:700 22px/1 var(--gl-hand);color:var(--green);display:flex;align-items:center;gap:6px}
+.gl-head p b{display:inline-grid;place-content:center;width:26px;height:26px;border-radius:50%;background:var(--green);color:var(--cream);font:800 14px/1 var(--body);transition:transform .35s}
+.gl-head:hover p b{transform:rotate(45deg)}
+.gl-head-video{margin-top:70px}
+
+/* Dinding poster */
+.gl-wall{position:relative;display:flex;align-items:flex-start;justify-content:center;gap:clamp(10px,1.7vw,28px);padding:34px 0 80px;isolation:isolate}
+.gl-path{position:absolute;inset:0;width:100%;height:100%;z-index:-1;overflow:visible;pointer-events:none}
+.gl-path .dash{fill:none;stroke:var(--cream);stroke-width:3;stroke-linecap:round;stroke-dasharray:1 11;vector-effect:non-scaling-stroke;opacity:.95}
+.gl-path .reveal{fill:none;stroke:#fff;stroke-width:16;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:0}
+.gl-card{position:relative;flex:var(--grow,1) 1 0;min-width:0;max-width:268px;margin-top:var(--mt,0);transform:rotate(var(--r,0deg));z-index:1;will-change:transform}
+.gl-par{display:block}
+.gl-btn{display:block;width:100%;padding:0;border:0;background:none;text-align:left;cursor:pointer;transform-style:preserve-3d;border-radius:6px}
+.gl-btn:focus-visible{outline:3px solid var(--red);outline-offset:6px}
+.gl-paper{display:block;position:relative;background:var(--gl-paper);padding:10px 10px 0;border-radius:6px;box-shadow:0 1px 0 #fff inset,0 2px 4px #bd5b0f14,0 22px 34px -14px #bd5b0f60,0 8px 14px -8px #bd5b0f38}
+.gl-frame{display:block;position:relative;overflow:hidden;border-radius:3px;background:#e0140a}
+.gl-frame img{width:100%;height:auto;display:block;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.gl-card:hover .gl-frame img{transform:scale(1.045)}
+.gl-shine{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mx,50%) var(--my,30%),rgba(255,255,255,.55),transparent 55%);mix-blend-mode:soft-light}
+.gl-card:hover .gl-shine{opacity:1}
+.gl-cap{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 4px 12px;min-height:56px}
+.gl-cap span{display:grid;line-height:1.05}
+.gl-cap small{font-size:9px;font-weight:800;letter-spacing:.14em;color:var(--red)}
+.gl-cap b{font:700 clamp(17px,1.7vw,23px)/1.05 var(--gl-hand);color:var(--green)}
+.gl-cap i{flex:none;display:grid;place-content:center;width:26px;height:26px;border-radius:50%;background:var(--yellow);color:var(--green);font:800 14px/1 var(--body);font-style:normal;transition:transform .35s,background .3s}
+.gl-card:hover .gl-cap i{transform:rotate(45deg) scale(1.1);background:var(--red);color:var(--cream)}
+.gl-tape{position:absolute;top:-13px;left:50%;width:72px;height:24px;margin-left:-36px;z-index:2;transform:rotate(var(--tape,-4deg));background:rgba(255,204,66,.78);box-shadow:0 2px 5px #bd5b0f25;clip-path:polygon(0 8%,4% 0,8% 10%,12% 0,16% 8%,84% 8%,88% 0,92% 10%,96% 0,100% 8%,100% 92%,96% 100%,92% 90%,88% 100%,84% 92%,16% 92%,12% 100%,8% 90%,4% 100%,0 92%)}
+.gl-sticker{position:absolute;z-index:3;font:800 var(--s,34px)/1 var(--heading);color:var(--c,var(--cream));pointer-events:none;text-shadow:0 3px 0 #bd5b0f22}
+
+/* Gerak dimatikan (tombol jeda / kurangi gerak): hover tetap hidup lewat CSS */
+.motion-paused .gl-card{transition:transform .4s cubic-bezier(.2,.9,.3,1.3)}
+.motion-paused .gl-card:hover{transform:rotate(0deg) scale(1.05);z-index:5}
+
+/* Pita bahan */
+.gl-ribbon{overflow:hidden;background:var(--green);color:var(--cream);border-radius:60px;transform:rotate(-1.4deg);margin:0 -2%;box-shadow:0 14px 28px -16px #bd5b0f90}
+.gl-ribbon-track{display:flex;gap:0;white-space:nowrap;width:max-content;padding:14px 0;font:800 clamp(18px,2.4vw,28px)/1 var(--heading);letter-spacing:-.02em}
+.gl-ribbon-track span{display:inline-flex;align-items:center;gap:22px;padding-right:22px}
+.gl-ribbon-track em{font-style:normal;color:var(--yellow);font-size:.8em}
+
+/* Lightbox poster */
+dialog.gl-lb{padding:0;border:0;background:transparent;color:var(--cream);width:min(980px,96vw);max-width:none;max-height:none;overflow:visible;margin:auto}
+dialog.gl-lb::backdrop{background:radial-gradient(circle at 50% 40%,#bd5b0ff2,#bd5b0ffa);backdrop-filter:blur(8px)}
+.gl-lb-body{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(6px,2vw,22px)}
+.gl-lb figure{margin:0;display:grid;justify-items:center;gap:14px;touch-action:pan-y}
+.gl-lb-paper{background:var(--gl-paper);padding:12px 12px 0;border-radius:8px;box-shadow:0 40px 70px -20px #000a;transform:rotate(-1.2deg)}
+.gl-lb-paper img{display:block;width:auto;max-width:100%;max-height:min(72svh,760px);border-radius:3px;background:#e0140a;margin:0 auto}
+.gl-lb-paper b{display:block;padding:10px 6px 12px;font:700 26px/1.1 var(--gl-hand);color:var(--green);text-align:center}
+.gl-lb figcaption{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 18px;font-size:13px}
+.gl-lb figcaption span{font-weight:800;letter-spacing:.14em;color:var(--yellow)}
+.gl-lb-cta{display:inline-flex;gap:8px;align-items:center;background:var(--yellow);color:var(--green);font-weight:800;padding:11px 18px;border-radius:40px;transition:transform .3s,background .3s}
+.gl-lb-cta:hover{transform:translateY(-2px);background:var(--cream)}
+.gl-nav{width:52px;height:52px;border-radius:50%;border:1px solid #fff6df55;background:#fff6df18;color:var(--cream);font-size:22px;display:grid;place-content:center;transition:background .25s,transform .25s,color .25s}
+.gl-nav:hover{background:var(--yellow);color:var(--green);transform:scale(1.08)}
+dialog.gl-lb .dialog-close{color:var(--green);position:fixed;top:18px;right:18px;float:none;margin:0;width:48px;height:48px;font-size:28px;line-height:1;z-index:5;transition:transform .3s}
+dialog.gl-lb .dialog-close:hover{transform:rotate(90deg)}
+
+/* Responsif (poster + lightbox) */
+@media(max-width:800px){
+  .gl-head p{font-size:19px}
+  .gl-wall{display:grid;grid-template-columns:1fr 1fr;gap:26px 16px;padding:30px 0 56px}
+  .gl-card{max-width:none;margin-top:0!important;transform:rotate(calc(var(--r,0deg)*.6))}
+  .gl-card:nth-child(even){margin-top:34px!important}
+  .gl-card:last-of-type{grid-column:1/-1;width:56%;justify-self:center;margin-top:0!important}
+  .gl-path,.gl-sticker{display:none}
+  .gl-paper{padding:7px 7px 0}.gl-cap{padding:7px 2px 9px;min-height:48px}.gl-cap i{width:22px;height:22px;font-size:12px}
+  .gl-tape{width:54px;height:20px;margin-left:-27px;top:-11px}
+  .gl-nav{width:42px;height:42px;font-size:18px}
+  .gl-lb-body{grid-template-columns:1fr;gap:12px}
+  .gl-nav{position:fixed;bottom:22px;z-index:5}.gl-nav.prev{left:18px}.gl-nav.next{right:18px}
+  .gl-lb figcaption{padding-bottom:70px}
+}
+@media(max-width:480px){.gl-card:last-of-type{width:68%}.gl-cap b{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.gl *{transition-duration:.01ms!important}}
